@@ -10,7 +10,6 @@ $(function(){
 	console.log("Kicking off canvas.");
 	var collage = new Collage();
 	collage.canvas = new Canvas();
-	collage.album = new Album();
 })
 
 function Collage(){
@@ -20,9 +19,13 @@ function Collage(){
 Collage.prototype = {
 	init: function(){
 		console.log("Collage here!");
+		this.bindEvents();
 	},
 	bindEvents: function(){
+		$("#query").on('submit', this.display.bind(this));
 	},
-	display: function(){
+	display: function(event){
+		event.preventDefault();
+		this.album = new Album(this.canvas.query());
 	}
 }

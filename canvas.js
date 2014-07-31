@@ -12,5 +12,8 @@ function Canvas(){
 Canvas.prototype = {
 	init: function(){
 		console.log("Canvas here!");
+	},
+	query: function(){
+		return $("#queryString").val();
 	}
 }
