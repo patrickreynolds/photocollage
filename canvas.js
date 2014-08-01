@@ -15,5 +15,11 @@ Canvas.prototype = {
 	},
 	query: function(){
 		return $("#queryString").val();
+	},
+	render: function(photos){
+		$(".collage").empty();
+		for(var index in photos){
+			$(".collage").prepend("<img src=\""+ photos[index] +"\" class=\"image-responsive col-xs-3\">");
+		}
 	}
 }
