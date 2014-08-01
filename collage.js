@@ -6,14 +6,16 @@ Use Case: The controller is used to communicate user
 					information to the view.
 */
 
+var collage;
+
 $(function(){
 	console.log("Kicking off canvas.");
-	var collage = new Collage();
+	collage = new Collage();
 	collage.canvas = new Canvas();
+	collage.init();
 })
 
 function Collage(){
-	this.init();
 }
 
 Collage.prototype = {
@@ -22,10 +24,13 @@ Collage.prototype = {
 		this.bindEvents();
 	},
 	bindEvents: function(){
-		$("#query").on('submit', this.display.bind(this));
+		$("#query").on('submit', this.initAlbum.bind(this));
 	},
-	display: function(event){
+	initAlbum: function(){
 		event.preventDefault();
-		this.album = new Album(this.canvas.query());
+		this.album = new Album(this.canvas.query(), this);
+	},
+	display: function(){
+    this.canvas.render(this.album.photos);
 	}
 }
