@@ -7,19 +7,33 @@ Use Case: Canvas is used for displaying an album,
 
 function Canvas(){
 	this.init();
+	this.$collage = $(".collage")
 }
 
 Canvas.prototype = {
 	init: function(){
-		console.log("Canvas here!");
 	},
 	query: function(){
 		return $("#queryString").val();
 	},
+	loadPhotos: function(){
+		
+	},
 	render: function(photos){
-		$(".collage").empty();
+		this.$collage.hide().empty();
+		this.loadPhotos
 		for(var index in photos){
-			$(".collage").prepend("<img src=\""+ photos[index] +"\" class=\"image-responsive col-xs-3\">");
+			this.$collage.prepend("<img src=\""+ photos[index] +"\" class=\"image-responsive col-xs-3\">");
 		}
+		var counter = 0,
+				_this = this;
+		$('img').load(function() {
+			console.log(counter)
+			if (++counter >= photos.length) {
+ 				_this.$collage.fadeIn()
+ 			}
+		})
+
+		
 	}
 }

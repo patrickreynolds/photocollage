@@ -9,7 +9,6 @@ Use Case: The controller is used to communicate user
 var collage;
 
 $(function(){
-	console.log("Kicking off canvas.");
 	collage = new Collage();
 	collage.canvas = new Canvas();
 	collage.init();
@@ -20,7 +19,6 @@ function Collage(){
 
 Collage.prototype = {
 	init: function(){
-		console.log("Collage here!");
 		this.bindEvents();
 	},
 	bindEvents: function(){

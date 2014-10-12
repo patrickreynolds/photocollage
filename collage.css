@@ -13,4 +13,6 @@ form {
 .collage > img {
 	padding: 0px;
 	opacity: .6;
+	display: inherit;
 }
+

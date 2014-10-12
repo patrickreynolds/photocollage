@@ -6,8 +6,8 @@ Use Case: Album is used for managing a
 					on to the canvas for presentation details.
 */
 function Album(queryInput, controller){
-	this.controller = controller
 	this.queryInput = queryInput;
+	this.controller = controller;
 	this.access_token = ACCESS_TOKEN;
 	this.queryString = "https://api.instagram.com/v1/tags/"+ this.queryInput +"/media/recent?access_token=" + this.access_token;
 	this.photos = [];
@@ -16,7 +16,6 @@ function Album(queryInput, controller){
 
 Album.prototype = {
 	init: function(){
-		console.log("Album here!");
 		this.fetchPhotos();
 	},
 	fetchPhotos: function(){
@@ -29,8 +28,8 @@ Album.prototype = {
 	},
 	selectStandardUrl: function(response){
 		this.album.photos = _.map(response.data, function(media){
-									return media.images.standard_resolution.url;
-								});
+													return media.images.standard_resolution.url;
+												});
 		this.display();
 	}
 }
