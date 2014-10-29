@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Collage</title>
-		<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="collage.css">
-	</head>
-	<body class="container-fluid">
-		<form role="form" class="col-xs-6 col-xs-offset-3" id="query">
-  		<div class="form-group">
-    		<input type="text" class="form-control input-lg" id="queryString">
-  		</div>
-		</form>
-		
-		<div class="collage"></div>
+  <head>
+    <title>Insta Collage</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/collage.css">
+  </head>
+  <body>
 
-	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
-	<script type="text/javascript" src="access_token.js"></script>
-	<script type="text/javascript" src="album.js"></script>
-	<script type="text/javascript" src="canvas.js"></script>
-	<script type="text/javascript" src="collage.js"></script>
-	</body>
+    <section class="collage">
+      <form class="search-box" action="">
+        <input class="query-input" placeholder="Enter a hashtag.." autofocus>
+        <input type="submit" class="query-search-button">
+      </form>
+      <div class="photo-grid"></div>
+    </section>
+
+    <script type="text/template" id="photoTemplate">
+      <img src="<%= images.standard_resolution.url %>" class="grid-image">
+    </script>
+
+    <script type="text/template" id="collage-template">
+      <div class="photo-container">
+        <%= photo %>
+      </div>
+    </script>
+  
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+
+    <script src="js/config/accessToken.js"></script>
+    <script src="js/models/photo.js"></script>
+    <script src="js/collections/album.js"></script>
+    <script src="js/views/photo.js"></script>
+    <script src="js/views/collage.js"></script>
+    <script src="js/collage.js"></script>
+  </body>
 </html>
